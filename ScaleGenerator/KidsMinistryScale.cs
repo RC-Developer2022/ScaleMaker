@@ -11,7 +11,19 @@ namespace ScaleGenerator
 
         private void buttonGenerateAndExport_Click(object sender , EventArgs e)
         {
-            var scaleNames = new List<string> { "Scale 1" , "Scale 2" , "Scale 3" };
+            List<string> scaleNames = new List<string>();
+            var names = listNamesScale.Text;
+
+            if(names.Contains("\n"))
+            {
+                var splitNames = names.Split(new string[] {"\r\n" }, StringSplitOptions.None);
+
+                for(int i = 0 ; i < splitNames.Count() ; i++)
+                {
+                    scaleNames.Add(splitNames[i]);
+                }
+            }
+            
             var count = 3;
 
             var excelManager = new ExcelManager();

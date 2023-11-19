@@ -35,6 +35,11 @@ public sealed class ExcelManager
             // Copie o arquivo do diretório de trabalho para o diretório de Downloads
             File.Copy(fileName , downloadPath + fileName);
         }
+        else
+        { 
+            File.Delete(downloadPath + fileName);
+            File.Copy(fileName , downloadPath + fileName);
+        }
     }
 
     public List<Scale> GenerateScales(List<string> scaleNames , int count)

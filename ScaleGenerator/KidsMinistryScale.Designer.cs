@@ -29,7 +29,7 @@ partial class KidsMinistryScale
     private void InitializeComponent()
     {
         buttonGenerateAndExport = new Button();
-        textBox1 = new TextBox();
+        listNamesScale = new TextBox();
         SuspendLayout();
         // 
         // buttonGenerateAndExport
@@ -45,18 +45,18 @@ partial class KidsMinistryScale
         // 
         // textBox1
         // 
-        textBox1.Location = new Point(87 , 12);
-        textBox1.Multiline = true;
-        textBox1.Name = "textBox1";
-        textBox1.Size = new Size(217 , 177);
-        textBox1.TabIndex = 1;
+        listNamesScale.Location = new Point(87 , 12);
+        listNamesScale.Multiline = true;
+        listNamesScale.Name = "textBox1";
+        listNamesScale.Size = new Size(217 , 177);
+        listNamesScale.TabIndex = 1;
         // 
         // KidsMinistryScale
         // 
         AutoScaleDimensions = new SizeF(8F , 20F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(380 , 411);
-        Controls.Add(textBox1);
+        Controls.Add(listNamesScale);
         Controls.Add(buttonGenerateAndExport);
         Margin = new Padding(4 , 5 , 4 , 5);
         Name = "KidsMinistryScale";
@@ -65,9 +65,9 @@ partial class KidsMinistryScale
         PerformLayout();
     }
 
-    private Button buttonGenerateAndExport;
 
     #endregion
 
-    private TextBox textBox1;
+    private Button buttonGenerateAndExport;
+    private TextBox listNamesScale;
 }
