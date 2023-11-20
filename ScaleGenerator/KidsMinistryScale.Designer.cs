@@ -43,11 +43,11 @@ partial class KidsMinistryScale
         buttonGenerateAndExport.UseVisualStyleBackColor = true;
         buttonGenerateAndExport.Click += buttonGenerateAndExport_Click;
         // 
-        // textBox1
+        // listNamesScale
         // 
         listNamesScale.Location = new Point(87 , 12);
         listNamesScale.Multiline = true;
-        listNamesScale.Name = "textBox1";
+        listNamesScale.Name = "listNamesScale";
         listNamesScale.Size = new Size(217 , 177);
         listNamesScale.TabIndex = 1;
         // 

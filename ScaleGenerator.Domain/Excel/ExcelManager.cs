@@ -3,18 +3,19 @@ using ScaleGenerator.Domain.Entities;
 
 namespace ScaleGenerator.Domain.Excel;
 
-public sealed class ExcelManager
+public static class ExcelManager
 {
-    public void ExportToExcel(List<Scale> scales)
+    public static void ExportToExcel(Tuple<List<Scale>, DateTime> tuple)
     {
         var workbook = new XLWorkbook();
         var worksheet = workbook.Worksheets.Add("Escalas");
 
-        worksheet.Cell(1 , 1).Value = "Nome";
+        worksheet.Cell(1 , 1).Value = tuple.Item2.ToString("dd/MM/yyyy");
+        worksheet.Cell(2 , 1).Value = "Nome";
 
-        for(int i = 0 ; i < scales.Count ; i++)
+        for(int i = 0 ; i < tuple.Item1.Count ; i++)
         {
-            worksheet.Cell(i + 2 , 1).Value = scales[i].Name;
+            worksheet.Cell(i + 2 , 1).Value = tuple.Item1[i].Name;   
         }
 
         string fileName = "Escalas.xlsx";
@@ -42,21 +43,48 @@ public sealed class ExcelManager
         }
     }
 
-    public List<Scale> GenerateScales(List<string> scaleNames , int count)
+    public static Tuple<List<Scale>, DateTime> GenerateScales(List<string> scaleNames , int count)
     {
         var random = new Random();
         var scales = new List<Scale>();
+        DateTime dateTime = DateTime.Now;
+        DayOfWeek scaleDate = DateTime.Now.DayOfWeek;
+
+        switch(scaleDate)
+        {
+            case DayOfWeek.Sunday:
+                dateTime = dateTime.AddDays(6);
+                break;
+            case DayOfWeek.Monday:
+                dateTime = dateTime.AddDays(5);
+                break;
+            case DayOfWeek.Tuesday:
+                dateTime = dateTime.AddDays(4);
+                break;
+            case DayOfWeek.Wednesday:
+                dateTime = dateTime.AddDays(3);
+                break;
+            case DayOfWeek.Thursday:
+                dateTime = dateTime.AddDays(2);
+                break;
+            case DayOfWeek.Friday:
+                dateTime = dateTime.AddDays(1);
+                break;
+
+        }
 
         for(int i = 0 ; i < count ; i++)
         {
+
             var scale = new Scale
             {
                 Name = scaleNames[random.Next(scaleNames.Count)] ,
+                ScaleDate = dateTime
             };
 
             scales.Add(scale);
         }
 
-        return scales;
+        return Tuple.Create(scales, dateTime);
     }
 }
