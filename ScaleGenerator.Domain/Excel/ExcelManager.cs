@@ -75,10 +75,14 @@ public static class ExcelManager
 
         for(int i = 0 ; i < count ; i++)
         {
+            string name = scaleNames[random.Next(scaleNames.Count)];
+
+            if(scales[i].Name.Contains(name))
+                continue;
 
             var scale = new Scale
             {
-                Name = scaleNames[random.Next(scaleNames.Count)] ,
+                Name = name,
                 ScaleDate = dateTime
             };
 
