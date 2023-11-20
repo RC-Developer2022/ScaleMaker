@@ -5,7 +5,7 @@ namespace ScaleGenerator.Domain.Excel;
 
 public static class ExcelManager
 {
-    public static void ExportToExcel(Tuple<List<Scale>, DateTime> tuple)
+    public static void ExportToExcel(Tuple<List<Scale> , DateTime> tuple)
     {
         var workbook = new XLWorkbook();
         var worksheet = workbook.Worksheets.Add("Escalas");
@@ -15,7 +15,7 @@ public static class ExcelManager
 
         for(int i = 0 ; i < tuple.Item1.Count ; i++)
         {
-            worksheet.Cell(i + 2 , 1).Value = tuple.Item1[i].Name;   
+            worksheet.Cell(i + 2 , 1).Value = tuple.Item1[i].Name;
         }
 
         string fileName = "Escalas.xlsx";
@@ -37,13 +37,13 @@ public static class ExcelManager
             File.Copy(fileName , downloadPath + fileName);
         }
         else
-        { 
+        {
             File.Delete(downloadPath + fileName);
             File.Copy(fileName , downloadPath + fileName);
         }
     }
 
-    public static Tuple<List<Scale>, DateTime> GenerateScales(List<string> scaleNames , int count)
+    public static Tuple<List<Scale> , DateTime> GenerateScales(List<string> scaleNames , int count)
     {
         var random = new Random();
         var scales = new List<Scale>();
@@ -77,18 +77,18 @@ public static class ExcelManager
         {
             string name = scaleNames[random.Next(scaleNames.Count)];
 
-            if(scales[i].Name.Contains(name))
+            if(!scales.Where(x => x.Name.Contains(name)).Count().Equals(0))
                 continue;
 
             var scale = new Scale
             {
-                Name = name,
+                Name = name ,
                 ScaleDate = dateTime
             };
 
             scales.Add(scale);
         }
 
-        return Tuple.Create(scales, dateTime);
+        return Tuple.Create(scales , dateTime);
     }
 }
