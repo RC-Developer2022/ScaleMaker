@@ -10,7 +10,7 @@ public static class ExcelManager
         var workbook = new XLWorkbook();
         var worksheet = workbook.Worksheets.Add("Escalas");
 
-        worksheet.Cell(1 , 1).Value = tuple.Item2.ToString("dd/MM/yyyy");
+        worksheet.Cell(1 , 1).Value = tuple.Item2.Date.ToString("dd/MM/yyyy");
         worksheet.Cell(2 , 1).Value = "Nome";
 
         for(int i = 0 ; i < tuple.Item1.Count ; i++)
@@ -77,7 +77,7 @@ public static class ExcelManager
         {
             string name = scaleNames[random.Next(scaleNames.Count)];
 
-            if(!scales.Where(x => x.Name.Contains(name)).Count().Equals(0))
+            if(scales.Where(x => x.Name.Equals(name)).Equals(1))
                 continue;
 
             var scale = new Scale

@@ -16,7 +16,7 @@ public partial class KidsMinistryScale : Form
 
         if(names.Contains("\n"))
         {
-            var splitNames = names.Split(new string[] {"\r\n" }, StringSplitOptions.None);
+            var splitNames = names.Split(new string[] { "\r\n" } , StringSplitOptions.None);
 
             for(int i = 0 ; i < splitNames.Count() ; i++)
             {
@@ -26,6 +26,8 @@ public partial class KidsMinistryScale : Form
 
         var excelValue = ExcelManager.GenerateScales(scaleNames , 3);
         ExcelManager.ExportToExcel(excelValue);
+
+        dataGridViewScale.DataSource = excelValue.Item1;
 
         MessageBox.Show("Escalas geradas e exportadas com sucesso!" , "Sucesso" , MessageBoxButtons.OK , MessageBoxIcon.Information);
     }

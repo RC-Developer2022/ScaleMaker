@@ -30,14 +30,16 @@ partial class KidsMinistryScale
     {
         buttonGenerateAndExport = new Button();
         listNamesScale = new TextBox();
+        dataGridViewScale = new DataGridView();
+        ((System.ComponentModel.ISupportInitialize) dataGridViewScale).BeginInit();
         SuspendLayout();
         // 
         // buttonGenerateAndExport
         // 
-        buttonGenerateAndExport.Location = new Point(55 , 362);
+        buttonGenerateAndExport.Location = new Point(87 , 220);
         buttonGenerateAndExport.Margin = new Padding(4 , 5 , 4 , 5);
         buttonGenerateAndExport.Name = "buttonGenerateAndExport";
-        buttonGenerateAndExport.Size = new Size(249 , 35);
+        buttonGenerateAndExport.Size = new Size(217 , 35);
         buttonGenerateAndExport.TabIndex = 0;
         buttonGenerateAndExport.Text = "Gerar e Exportar Escalas";
         buttonGenerateAndExport.UseVisualStyleBackColor = true;
@@ -45,22 +47,33 @@ partial class KidsMinistryScale
         // 
         // listNamesScale
         // 
-        listNamesScale.Location = new Point(87 , 12);
+        listNamesScale.Location = new Point(87 , 22);
         listNamesScale.Multiline = true;
         listNamesScale.Name = "listNamesScale";
         listNamesScale.Size = new Size(217 , 177);
         listNamesScale.TabIndex = 1;
         // 
+        // dataGridViewScale
+        // 
+        dataGridViewScale.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+        dataGridViewScale.Location = new Point(33 , 263);
+        dataGridViewScale.Name = "dataGridViewScale";
+        dataGridViewScale.RowHeadersWidth = 51;
+        dataGridViewScale.Size = new Size(303 , 134);
+        dataGridViewScale.TabIndex = 2;
+        // 
         // KidsMinistryScale
         // 
         AutoScaleDimensions = new SizeF(8F , 20F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(380 , 411);
+        ClientSize = new Size(380 , 426);
+        Controls.Add(dataGridViewScale);
         Controls.Add(listNamesScale);
         Controls.Add(buttonGenerateAndExport);
         Margin = new Padding(4 , 5 , 4 , 5);
         Name = "KidsMinistryScale";
         Text = "Formulário Principal";
+        ((System.ComponentModel.ISupportInitialize) dataGridViewScale).EndInit();
         ResumeLayout(false);
         PerformLayout();
     }
@@ -70,4 +83,5 @@ partial class KidsMinistryScale
 
     private Button buttonGenerateAndExport;
     private TextBox listNamesScale;
+    private DataGridView dataGridViewScale;
 }
